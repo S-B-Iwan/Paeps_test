@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -66,33 +65,17 @@
 <div style="display: flex; justify-content: center; align-items: center; height: 70vh;">
   <div class="form-container">
     <form onsubmit="return validate(this);">
-      <label for="name">Gib hier deinen Code ein:</label>
+      <label for="vpnid">Gib hier deinen Code ein:</label>
       <input type="text" name="vpnid" id="vpnid" placeholder="xx123" required>
       <br>
       <button type="submit">Feedback laden</button>
     </form>
   </div>
   <script>
-
-    function urlExists(url, callback)
-    {
-      var http = new XMLHttpRequest();
-      http.open('HEAD', url);
-      http.onreadystatechange = function() {
-          if (this.readyState == this.DONE) {
-              if(this.status == 200) {
-                  callback(url);
-              }
-          }
-      };
-      http.send();
-    }
-
-    function validate (form) {
-      var url = document.getElementById("vpnid").value + ".html";
-      urlExists(url, function (url) {
-        location.href = url;
-      });
+    function validate(form) {
+      var code = document.getElementById("vpnid").value.trim();
+      // Redirect to codes/[code].html
+      window.location.href = "codes/" + code + ".html";
       return false;
     }
   </script>
